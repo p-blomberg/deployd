@@ -39,11 +39,11 @@ sqs = boto3.resource(
     aws_secret_access_key=settings['aws_secret_access_key']
 )
 queue = sqs.get_queue_by_name(QueueName=settings['queueName'])
+print('Found queue {0}'.format(settings['queueName']))
 
 killer = GracefulKiller()
 killer.do_exit = True
 while not killer.kill_now:
-    print('Fetching messages from {0}'.format(settings['queueName']))
     for message in queue.receive_messages(MaxNumberOfMessages=10):
         killer.do_exit = False
         try:
@@ -71,5 +71,4 @@ while not killer.kill_now:
         message.delete()
     if not killer.kill_now:
         killer.do_exit = True
-        print('sleep')
         sleep(settings['sleep'])
