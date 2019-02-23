@@ -2,3 +2,5 @@ region: 'eu-north-1'
 queueName: 'deploy-example'
 script: './example-script.sh'
 sleep: 10
+aws_access_key_id: null
+aws_secret_access_key: null

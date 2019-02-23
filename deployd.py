@@ -32,7 +32,12 @@ if len(sys.argv) != 2:
 with open(sys.argv[1]) as f:
     settings = yaml.safe_load(f)
 
-sqs = boto3.resource('sqs', region_name=settings['region'])
+sqs = boto3.resource(
+    'sqs',
+    region_name=settings['region'],
+    aws_access_key_id=settings['aws_access_key_id'],
+    aws_secret_access_key=settings['aws_secret_access_key']
+)
 queue = sqs.get_queue_by_name(QueueName=settings['queueName'])
 
 killer = GracefulKiller()
