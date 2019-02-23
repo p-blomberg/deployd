@@ -5,7 +5,7 @@ WantedBy=multi-user.target
  
 [Service]
 Type=simple
-ExecStart=/usr/bin/python3 /opt/deployd.py /opt/foobar/deployd-settings.yaml
+ExecStart=/usr/bin/python3 -u /opt/deployd.py /opt/foobar/deployd-settings.yaml
 Restart=always
 User=appdeploy
 Group=appdeploy
