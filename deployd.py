@@ -66,7 +66,9 @@ while not killer.kill_now:
             eprint("Something went wrong - got exit code {0} from script".format(result.returncode))
         else:
             print("Done with build {0}".format(build_id))
-            message.delete()
+
+        print('Deleting message from queue: {0}'.format(build_id))
+        message.delete()
     if not killer.kill_now:
         killer.do_exit = True
         print('sleep')
