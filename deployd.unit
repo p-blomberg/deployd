@@ -1,0 +1,14 @@
+[Unit]
+Description=DeployD example
+After=network.target
+WantedBy=multi-user.target
+ 
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /opt/deployd.py /opt/foobar/deployd-settings.yaml
+Restart=always
+User=appdeploy
+Group=appdeploy
+
+[Install]
+WantedBy=multi-user.target

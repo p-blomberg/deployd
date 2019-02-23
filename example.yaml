@@ -1,0 +1,4 @@
+region: 'eu-north-1'
+queueName: 'deploy-example'
+script: './example-script.sh'
+sleep: 10
